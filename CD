@@ -310,21 +310,3 @@ visualize_results(hybrid_model, test_loader, device, num_images=5)
 print("Visualizing results for U-Net...")
 visualize_results(unet_model, test_loader, device, num_images=5)
 
-# Save the evaluation results to files
-with open("evaluation_results.txt", "w") as f:
-    f.write(f"HybridUNet - Dice: {avg_dice_hybrid:.4f}, IoU: {avg_iou_hybrid:.4f}\n")
-    f.write(f"U-Net - Dice: {avg_dice_unet:.4f}, IoU: {avg_iou_unet:.4f}\n")
-    f.write("\nTraining Losses for HybridUNet\n")
-    for epoch, loss in enumerate(train_losses_hybrid, 1):
-        f.write(f"Epoch {epoch}: {loss:.4f}\n")
-    f.write("\nValidation Losses for HybridUNet\n")
-    for epoch, loss in enumerate(val_losses_hybrid, 1):
-        f.write(f"Epoch {epoch}: {loss:.4f}\n")
-    f.write("\nTraining Losses for U-Net\n")
-    for epoch, loss in enumerate(train_losses_unet, 1):
-        f.write(f"Epoch {epoch}: {loss:.4f}\n")
-    f.write("\nValidation Losses for U-Net\n")
-    for epoch, loss in enumerate(val_losses_unet, 1):
-        f.write(f"Epoch {epoch}: {loss:.4f}\n")
-
-print("Results saved in evaluation_results.txt")
